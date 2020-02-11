@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_intro">
+
+    <fragment
+        android:id="@+id/navigation_intro"
+        android:name="ru.handsapp.template.presentation.fragments.intro.FragmentIntro"
+        tools:layout="@layout/fragment_intro" />
+
+    <activity
+        android:id="@+id/navigation_mainActivity"
+        android:name="ru.handsapp.template.presentation.MainActivity"
+        tools:layout="@layout/activity_main" />
+
+    <fragment
+        android:id="@+id/navigation_order_list"
+        android:name="ru.handsapp.template.presentation.fragments.order_list.FragmentOrderList"
+        android:label="@string/title_order_list"
+        tools:layout="@layout/fragment_order_list" />
+
+</navigation>

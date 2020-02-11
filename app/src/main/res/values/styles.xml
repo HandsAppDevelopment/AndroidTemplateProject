@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryVariant</item>
+        <item name="colorAccent">@color/onPrimary</item>
+        <item name="colorControlNormal">@color/onPrimary</item>
+        <item name="colorControlActivated">@color/primary</item>
+        <item name="colorControlHighlight">@color/primary</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Typography -->
+    <style name="Typography" />
+
+    <style name="Typography.Header1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Typography.Header1.OnBackground">
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+
+    <style name="Typography.Header1.Primary">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="Typography.Header2">
+        <item name="android:textSize">26sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Typography.Header2.OnBackground">
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+
+    <style name="Typography.Header2.OnSurface">
+        <item name="android:textColor">@color/onSurface</item>
+    </style>
+
+    <style name="Typography.Header2.Secondary">
+        <item name="android:textColor">@color/secondary</item>
+    </style>
+
+</resources>

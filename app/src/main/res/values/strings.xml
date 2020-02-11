@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Template</string>
+    <string name="title_order_list">Заказы</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_help">Поддержка</string>
+    <string name="title_info">Справка</string>
+    <string name="bot_nav_title_order">Заказы</string>
+    <string name="bot_nav_title_profile">Профиль</string>
+    <string name="bot_nav_title_help">Поддержка</string>
+    <string name="bot_nav_title_info">Справка</string>
+    <string name="menu_complaint_text">Настройки</string>
+    <string name="tv_text_intro_text">Example Intro</string>
+    <string name="tv_order_list_text">Example Order List</string>
+</resources>
