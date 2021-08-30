@@ -2,8 +2,8 @@ package ru.handsapp.template.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ru.handsapp.template.app.utils.ErrorMessages
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -14,13 +14,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     //region LiveData
 
     // BottomNavigationView включен по умолчанию на всех фрагментов приложения
-    private val isBottomNavVisible = MutableLiveData<Boolean>(true)
+    val isBottomNavVisible = MutableLiveData(true)
 
-    fun setBottomNavVisible(isVisible: Boolean) {
-        isBottomNavVisible.value = isVisible
-    }
-
-    fun isBottomNavVisible(): LiveData<Boolean> = isBottomNavVisible
+    // Сообщение об ошибке
+    val errorMessageRes = MutableLiveData<Int>()
+    var messageError = MutableLiveData<ErrorMessages>()
+    val errorMessage = MutableLiveData<String>()
 
     //endregion
 

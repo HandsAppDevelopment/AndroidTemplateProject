@@ -1,14 +1,19 @@
 <resources>
-    <string name="app_name">Template</string>
-    <string name="title_order_list">Заказы</string>
-    <string name="title_profile">Профиль</string>
-    <string name="title_help">Поддержка</string>
-    <string name="title_info">Справка</string>
-    <string name="bot_nav_title_order">Заказы</string>
-    <string name="bot_nav_title_profile">Профиль</string>
-    <string name="bot_nav_title_help">Поддержка</string>
-    <string name="bot_nav_title_info">Справка</string>
-    <string name="menu_complaint_text">Настройки</string>
-    <string name="tv_text_intro_text">Example Intro</string>
-    <string name="tv_order_list_text">Example Order List</string>
+    <string name="app_name" translatable="false">Template</string>
+    <string name="title_order_list" translatable="false">Заказы</string>
+    <string name="title_profile" translatable="false">Профиль</string>
+    <string name="title_help" translatable="false">Поддержка</string>
+    <string name="title_info" translatable="false">Справка</string>
+    <string name="bot_nav_title_order" translatable="false">Заказы</string>
+    <string name="bot_nav_title_profile" translatable="false">Профиль</string>
+    <string name="bot_nav_title_help" translatable="false">Поддержка</string>
+    <string name="bot_nav_title_info" translatable="false">Справка</string>
+    <string name="menu_complaint_text" translatable="false">Настройки</string>
+    <string name="tv_text_intro_text" translatable="false">Example Intro</string>
+    <string name="tv_order_list_text" translatable="false">Example Order List</string>
+
+    <string name="internet_connection_error_text" translatable="false">Кажется нет Интернета. Убедитесь, что все работает!</string>
+    <string name="network_error_message_400" translatable="false">Не заполнены обязательные поля</string>
+    <string name="network_error_message_default" translatable="false">Не известная ошибка</string>
+
 </resources>

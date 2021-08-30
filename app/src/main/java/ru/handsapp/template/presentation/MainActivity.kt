@@ -2,21 +2,18 @@ package ru.handsapp.template.presentation
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.microsoft.appcenter.AppCenter
-import com.microsoft.appcenter.analytics.Analytics
-import com.microsoft.appcenter.crashes.Crashes
-import com.microsoft.appcenter.distribute.Distribute
-import ru.handsapp.template.BuildConfig
 import ru.handsapp.template.R
 import ru.handsapp.template.databinding.ActivityMainBinding
 
@@ -24,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     //region Properties
 
-    private val INTRO_DELAY: Long = 1000 // 1 sec
+    private val introDelay: Long = 1000 // 1 sec
 
     private lateinit var navController: NavController
     private lateinit var navBottomView: BottomNavigationView
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val mainViewModel: MainViewModel by lazy {
-        ViewModelProviders.of(this).get(MainViewModel::class.java)
+        ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
     //endregion
@@ -53,9 +50,22 @@ class MainActivity : AppCompatActivity() {
         // Убрать FragmentIntro из BackStack
         val navOptions = NavOptions.Builder().setPopUpTo(R.id.navigation_intro, true).build()
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             navController.navigate(R.id.navigation_order_list, null, navOptions)
-        }, INTRO_DELAY)
+        }, introDelay)
+
+        // Наблюдение за сообщениями об ошибках
+        mainViewModel.errorMessageRes.observe(this, { error ->
+            Toast.makeText(this, resources.getText(error), Toast.LENGTH_SHORT).show()
+        })
+
+        mainViewModel.errorMessage.observe(this, { error ->
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+        })
+
+        mainViewModel.messageError.observe(this, { error ->
+            Toast.makeText(this, resources.getText(error.messageRes), Toast.LENGTH_SHORT).show()
+        })
     }
 
     //endregion

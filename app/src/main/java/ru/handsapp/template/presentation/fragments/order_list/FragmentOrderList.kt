@@ -3,11 +3,11 @@ package ru.handsapp.template.presentation.fragments.order_list
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.fragment_order_list.*
+import androidx.lifecycle.ViewModelProvider
 import ru.handsapp.template.R
+import ru.handsapp.template.databinding.FragmentOrderListBinding
 import ru.handsapp.template.presentation.MainViewModel
 
 class FragmentOrderList : Fragment() {
@@ -15,24 +15,37 @@ class FragmentOrderList : Fragment() {
     //region Properties
 
     private val mainViewModel: MainViewModel by lazy {
-        ViewModelProviders.of(activity as FragmentActivity).get(MainViewModel::class.java)
+        ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
     }
+
+    private val orderListViewModel: OrderListViewModel by lazy {
+        val viewModel = ViewModelProvider(this).get(OrderListViewModel::class.java)
+        viewModel.setErrorHandler(mainViewModel)
+        viewModel
+    }
+
+    private lateinit var binding: FragmentOrderListBinding
 
     //endregion
 
     //region Lifecycle
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        return inflater.inflate(R.layout.fragment_order_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_order_list, container, false)
+        binding.lifecycleOwner = this
+        val view = binding.root
+        binding.viewmodel = orderListViewModel
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        val toolbarOrderList = toolbar_order_list
+        val toolbarOrderList = binding.toolbarOrderList
         (activity as AppCompatActivity).setSupportActionBar(toolbarOrderList)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         toolbarOrderList.title = getString(R.string.title_order_list)
@@ -40,7 +53,7 @@ class FragmentOrderList : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        mainViewModel.setBottomNavVisible(true)
+        mainViewModel.isBottomNavVisible.value = true
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
